@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Family chat Application | $broadcast, $emit and $on in Angular JS</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+      
+        <!-- SPELLS -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container" ng-app="eventApp">
+            <div class="row">
+                <div class="jumbotron text-center">
+                    <h2>Family Chat Application | <i>Event - Based Communication in Angular JS</i></h2>
+                </div>
+            </div>
+            <div class="row" ng-controller="parentController">
+                <div class="col-md-4">
+                    <strong ng-click="parentToChildren()">{{name}}</strong>
+                    <input class="form-control" ng-model="parentMessage" />{{childMessage}}
+
+                    <div class="clearfix" style="margin:10px 0px;">
+                        <button class="btn btn-primary btn-sm" ng-click="talkToAll()">Send to All</button>
+                        <button class="btn btn-primary btn-sm" ng-click="talkToSon()">Send to Son</button>
+                        <button class="btn btn-primary btn-sm" ng-click="talkToDaughter()">Send to Daughter</button>
+                    </div>
+
+                    <textarea class="form-control" style="height:180px;" ng-model="parentArea"></textarea>
+                </div>
+
+                <div class="col-md-4" ng-controller="sonController">
+                    <strong >{{name}}</strong>
+                    <input class="form-control" ng-model="sonMessage" />{{childMessage}}
+                    <div class="clearfix" style="margin:10px 0px;">
+                            <button class="btn btn-primary btn-sm" ng-click="talkToParent()">Send To Parent</button>
+                            <button class="btn btn-primary btn-sm" ng-click="talkToSister()">Send To Sister</button>
+                    </div>
+                    <textarea class="form-control" style="height: 180px;" ng-model="sonArea"></textarea>
+                </div> <!-- end of sonController -->
+        
+                <div class="col-md-4" ng-controller="daughterController">
+                    <strong ng-click="tellParents()"> {{name}}</strong>
+                    <input class="form-control" ng-hide="childMessage" ng-model="daughterMessage" />{{childMessage}}
+                    <div class="clearfix" style="margin:10px 0px;">
+                            <button class="btn btn-primary btn-sm" ng-click="talkToParent()">Send To Parent</button>
+                            <button class="btn btn-primary btn-sm" ng-click="talkToBrother()">Send To Brother</button>
+                            <button class="btn btn-primary btn-sm" ng-click="talkToFamily()">Send To Family</button>
+                    </div>
+                    <textarea class="form-control" style="height: 180px;" ng-model="daughterArea"></textarea>
+                </div> <!-- end of daughterController -->
+            </div> <!-- end of parentController -->
+        </div> <!-- end of container -->
+    </body>
+</html>
